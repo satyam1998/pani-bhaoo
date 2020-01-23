@@ -4,7 +4,7 @@ pipeline {
 
       stages {
 
-            stage('Init') {
+            stage('GIT') {
 
                   steps {
 
@@ -16,39 +16,30 @@ pipeline {
                   }
 
             }
+            stage('COMPILE_packege') {
+
+                  steps {
+
+                        echo 'COMPILE THE FILE'
+                        def mvnhome=tool name: 'Local_maven', type: 'maven'
+                        sh "${mvnhome}/bin/mvn package"
+
+                  }
+
+            }
 
             stage('Build') {
 
                   steps {
 
                         echo 'Building Sample Maven Project'
-                        archiveArtifacts 'java-tomcat-sample-docker/*'
-
-                  }
-
-            }
-
-            stage('Deploy') {
-
-                  steps {
-
-                        echo "Deploying in Staging Area"
+                        archiveArtifacts '**/*.war'
                         copyArtifacts filter: '**/*.war', fingerprintArtifacts: true, projectName: 'First-pipeline'
-                        deploy adapters: [tomcat9(credentialsId: 'e146d8f5-fef8-4a23-a417-cd9d82495697', path: '', url: 'http://52.15.132.162:9090/')], contextPath: '/', war: '**/*.war'
 
                   }
 
             }
 
-            stage('Deploy Production') {
-
-                  steps {
-
-                        echo "Deploying in Production Area"
-
-                  }
-
-            }
 
       }
 
