@@ -22,7 +22,7 @@ pipeline {
 
                         echo 'COMPILE THE FILE'
                         tool name: 'Local_maven', type: 'maven'
-                        sh 'clean package'
+                        sh 'mvn package'
 
                   }
 
