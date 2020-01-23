@@ -21,8 +21,8 @@ pipeline {
                   steps {
 
                         echo 'COMPILE THE FILE'
-                        def mvnhome=tool name: 'Local_maven', type: 'maven'
-                        sh '${mvnhome}/bin/mvn package'
+                        tool name: 'Local_maven', type: 'maven'
+                        sh 'clean package'
 
                   }
 
