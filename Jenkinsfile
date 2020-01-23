@@ -22,7 +22,7 @@ pipeline {
                   steps {
 
                         echo 'Building Sample Maven Project'
-                        archiveArtifacts 'java-tomcat-sample-docker/pom.xml'
+                        archiveArtifacts 'java-tomcat-sample-docker/*.*'
 
                   }
 
