@@ -22,7 +22,7 @@ pipeline {
 
                         echo 'COMPILE THE FILE'
                         def mvnhome=tool name: 'Local_maven', type: 'maven'
-                        sh "${mvnhome}/bin/mvn package"
+                        sh '${mvnhome}/bin/mvn package'
 
                   }
 
