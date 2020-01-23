@@ -22,6 +22,7 @@ pipeline {
                   steps {
 
                         echo 'Building Sample Maven Project'
+                        archiveArtifacts 'build/libs/**/*.jar'
 
                   }
 
