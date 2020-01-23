@@ -22,7 +22,9 @@ pipeline {
 
                         echo 'COMPILE THE FILE'
                         tool name: 'Local_maven', type: 'maven'
-                        sh 'mvn package'
+                        sh 'mvn -f java-tomcat-sample-docker/pom.xml package'
+                        
+
 
                   }
 
